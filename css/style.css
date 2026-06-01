@@ -1,0 +1,73 @@
+/* =========================================
+   CITK Custom Styles
+   Main Color: #115e67
+   ========================================= */
+
+:root {
+    --citk-main: #115e67;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    padding-top: 60px; /* Accounts for the fixed navbar */
+}
+
+/* Color Utilities */
+.bg-citk {
+    background-color: var(--citk-main) !important;
+}
+
+.text-citk {
+    color: var(--citk-main) !important;
+}
+
+/* Section Spacing */
+section {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+/* Card Hover Effects for Vision, Mission, Values */
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(17, 94, 103, 0.15) !important;
+    border-color: var(--citk-main) !important;
+}
+
+/* Profile Image Styling */
+.profile-img-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    border: 4px solid var(--citk-main);
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ensure full-width layout looks clean for What We Do */
+.service-block {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    border-left: 5px solid var(--citk-main);
+}

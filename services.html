@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Do | CITK</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <style>
+        .bg-citk {
+            background-color: #115e67 !important;
+        }
+        .text-citk {
+            color: #115e67 !important;
+        }
+        .service-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            background-color: rgba(17, 94, 103, 0.1);
+            color: #115e67;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        .service-card {
+            transition: all 0.3s ease;
+            border: none;
+            border-left: 5px solid transparent;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+        .service-card:hover {
+            transform: translateX(10px);
+            border-left: 5px solid #115e67;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+        }
+        .page-header {
+            background: linear-gradient(rgba(17, 94, 103, 0.9), rgba(17, 94, 103, 0.9)), url('https://via.placeholder.com/1920x400') center/cover;
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 5px solid #0b4046;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+    <!-- FIXED NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-citk sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">CITK</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <!-- Who We Are Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="whoWeAreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            WHO WE ARE
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="whoWeAreDropdown">
+                            <li><a class="dropdown-item fw-bold text-citk border-bottom pb-2 mb-2" href="index.html">Overview: Who We Are</a></li>
+                            <li><a class="dropdown-item" href="index.html#about-us">About us</a></li>
+                            <li><a class="dropdown-item" href="index.html#vision">Vision</a></li>
+                            <li><a class="dropdown-item" href="index.html#mission">Mission</a></li>
+                            <li><a class="dropdown-item" href="index.html#values">Values</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- What We Do Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="whatWeDoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            WHAT WE DO
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="whatWeDoDropdown">
+                            <li><a class="dropdown-item fw-bold text-citk border-bottom pb-2 mb-2" href="services.html">Overview: What We Do</a></li>
+                            <li><a class="dropdown-item" href="services.html#training">Training</a></li>
+                            <li><a class="dropdown-item" href="services.html#consultancy">Consultancy</a></li>
+                            <li><a class="dropdown-item" href="services.html#research">Research</a></li>
+                            <li><a class="dropdown-item" href="services.html#policy">Tax Policy and Law Reforms</a></li>
+                            <li><a class="dropdown-item" href="services.html#litigation">Public Interest Litigation</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Our People Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ourPeopleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            OUR PEOPLE
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="ourPeopleDropdown">
+                            <li><a class="dropdown-item fw-bold text-citk border-bottom pb-2 mb-2" href="team.html">Overview: Our People</a></li>
+                            <li><a class="dropdown-item" href="team.html#job-okworo">Job Okworo</a></li>
+                            <li><a class="dropdown-item" href="team.html#bosire-nyamori">Bosire Nyamori</a></li>
+                            <li><a class="dropdown-item" href="team.html#ngina-mutava">Ngina Mutava</a></li>
+                            <li><a class="dropdown-item" href="team.html#wafula-nyongesa">Wafula Nyongesa</a></li>
+                            <li><a class="dropdown-item" href="team.html#gabriel-kitenga">Gabriel Kitenga</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="page-header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">WHAT WE DO</h1>
+            <p class="lead mb-0">Advancing expertise, shaping policy, and championing equity in taxation.</p>
+        </div>
+    </div>
+
+    <!-- Main Content: WHAT WE DO -->
+    <main class="container mb-5 flex-grow-1">
+
+        <div class="row g-4">
+            <div class="col-12" id="training">
+                <div class="card service-card shadow-sm p-4 h-100">
+                    <div class="d-flex flex-column flex-md-row align-items-start gap-4">
+                        <div class="service-icon shadow-sm">
+                            <i class="bi bi-person-workspace"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-citk fw-bold mb-3">Training</h3>
+                            <p class="text-secondary mb-2">The Institute offers customized training programs tailored to the specific needs of government departments, private sector entities, and non-profit organizations. Our courses serve professionals involved in taxation, fiscal policy, and related fields.</p>
+                            <p class="text-secondary mb-0">We also run a robust professional development program featuring conferences, workshops, seminars, and forums. These provide spaces for open dialogue among policymakers, academics, business leaders, and government officials.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12" id="consultancy">
+                <div class="card service-card shadow-sm p-4 h-100">
+                    <div class="d-flex flex-column flex-md-row align-items-start gap-4">
+                        <div class="service-icon shadow-sm">
+                            <i class="bi bi-briefcase"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-citk fw-bold mb-3">Consultancy</h3>
+                            <p class="text-secondary mb-0">The Institute provides expert consultancy services on taxation law, tax policy, and fiscal policy to clients in both the public and private sectors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12" id="research">
+                <div class="card service-card shadow-sm p-4 h-100">
+                    <div class="d-flex flex-column flex-md-row align-items-start gap-4">
+                        <div class="service-icon shadow-sm">
+                            <i class="bi bi-journal-text"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-citk fw-bold mb-3">Research</h3>
+                            <p class="text-secondary mb-2">The Institute is dedicated to building a strong knowledge base in tax policy and law.[cite: 1] It serves as a hub for research and knowledge dissemination in taxation.</p>
+                            <p class="text-secondary mb-0">It commissions and conducts research, publishes its findings, ands host national debates, colloquiums, and seminars that bring together professionals, academics, and government officials aimed at deepening understanding of tax law and policy. Through these initiatives, it contributes to the development of a robust body of tax jurisprudence and scholarship in Kenya, while also fostering comparative insights from other jurisdictions within the East African Community and the wider global context.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12" id="policy">
+                <div class="card service-card shadow-sm p-4 h-100">
+                    <div class="d-flex flex-column flex-md-row align-items-start gap-4">
+                        <div class="service-icon shadow-sm">
+                            <i class="bi bi-bank"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-citk fw-bold mb-3">Tax Policy and Law Reforms</h3>
+                            <p class="text-secondary mb-2">The Institute provides actionable and practical policy advice to government and other stakeholders on current and proposed tax reforms to aid in improving policy outcomes and betterment of the tax system. The Institute plays an important role in shaping tax policy and legislative reform.</p>
+                            <p class="text-secondary mb-0">It provides a forum through which tax professionals, policymakers, and stakeholders can engage in informed dialogue on proposed tax measures, administrative practices, and broader fiscal strategies. By participating in public consultations, offering technical submissions, and conducting policy-oriented research, the Institute contributes to the development of a tax system that is equitable, efficient, and aligned with constitutional principles such as fairness, transparency, and accountability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12" id="litigation">
+                <div class="card service-card shadow-sm p-4 h-100">
+                    <div class="d-flex flex-column flex-md-row align-items-start gap-4">
+                        <div class="service-icon shadow-sm">
+                            <i class="bi bi-scales"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-citk fw-bold mb-3">Public Interest Litigation</h3>
+                            <p class="text-secondary mb-0">The aim of the program is to use the tax policy and law to promote social and economic justice and help disadvantaged social groups.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-citk text-light py-4 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5 class="text-uppercase mb-3 fw-bold">Visit Us</h5>
+                    <p class="mb-1">Physical Address: Nyaku House, 1st Floor, Rm 10</p>
+                    <p class="mb-1">Arwings Kodhek Road</p>
+                    <p class="mb-0">P.O. Box 21141-00100 Hurlingham Nairobi</p>
+                </div>
+
+                <div class="col-md-6 text-md-end">
+                    <h5 class="text-uppercase mb-3 fw-bold">Contact Us</h5>
+                    <p class="mb-1">
+                        <strong>Email:</strong> <a href="mailto:citax@gmail.com" class="text-light text-decoration-none hover-underline">citax@gmail.com</a>
+                    </p>
+                    <p class="mb-0">
+                        <strong>Website:</strong> <a href="http://www.citaxkenya.org" target="_blank" class="text-light text-decoration-none hover-underline">www.citaxkenya.org</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Copyright and Privacy Policy -->
+            <hr class="border-light opacity-25">
+            <div class="text-center small text-light opacity-75">
+                &copy; 2026 Chartered Institute of Taxation (Kenya). All Rights Reserved.
+                <span class="mx-2">|</span>
+                <a href="privacy.html" class="text-light text-decoration-none border-bottom border-light border-opacity-25 pb-1">Privacy Policy</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
