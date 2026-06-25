@@ -1,103 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our People | CITK</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
+        /* Typography Upgrades */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .navbar-brand, .modal-title {
+            font-family: 'Playfair Display', serif;
+        }
+
         /* Core Brand Colors */
         .bg-citk {
-            background-color: #115e67 !important;
+            background-color: #19828f !important;
         }
         .text-citk {
-            color: #115e67 !important;
+            color: #19828f !important;
+        }
+        .btn-citk {
+            background-color: #19828f;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-citk:hover {
+            background-color: #0b4046;
+            color: white;
+            transform: translateY(-2px);
         }
 
+        .navbar {
+            padding-top: 3rem; /* Increased padding at the top */
+            padding-bottom: 1.5rem;
+            position: absolute; /* Positions the navbar over the hero image */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10; /* Ensures the navbar sits above the hero overlay */
+            background-color: transparent !important; /* Makes it transparent */
+        }
+
+        /* Prominent Multi-line Brand Logo */
+        .navbar-brand-custom {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            text-decoration: none;
+        }
+        .navbar-brand-custom .main-text {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
+        }
+        .navbar-brand-custom .sub-text {
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-top: 4px;
+        }
+
+        /* Navbar Micro-interactions */
+        .navbar-nav .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 2px;
+            left: 0;
+            background: rgba(255, 255, 255, 0.8);
+            transition: width 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Header Styling */
         .page-header {
-            background: linear-gradient(rgba(17, 94, 103, 0.9), rgba(17, 94, 103, 0.9)), url('https://via.placeholder.com/1920x400') center/cover;
+            background: linear-gradient(rgba(23, 126, 138, 0.4), rgb(23, 126, 138, 0.4)), url('img/sasun-bughdaryan-zbQ5UaREHx4-unsplash.jpg') center/cover;
             color: white;
-            padding: 4rem 0;
+            padding-top: 15rem;
+            padding-bottom: 10rem;
             margin-bottom: 3rem;
             border-bottom: 5px solid #0b4046;
         }
 
-        .team-card {
-            transition: all 0.3s ease;
+        /* Interactive Photo Grid Styles */
+        .team-grid-card {
             border: none;
-            border-left: 6px solid #115e67;
-            background-color: #ffffff;
-            overflow: hidden;
+            background: transparent;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
-        .team-card:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
-            transform: translateY(-5px);
-        }
-
-        /* New styles for team member photos */
-        .team-photo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            background-color: rgba(17, 94, 103, 0.03);
-            height: 100%;
+        .photo-wrapper {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 50%;
+            padding: 8px;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
         }
 
         .team-photo {
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid #115e67;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-
+            border: 3px solid #19828f;
+            transition: transform 0.4s ease;
         }
 
-        .job-photo{
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #115e67;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        /* Hover Effects */
+        .team-grid-card:hover .photo-wrapper {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(17, 94, 103, 0.2);
+        }
+        .team-grid-card:hover .team-photo {
+            transform: scale(1.05);
         }
 
-        .gabriel-photo{
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #115e67;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        /* Modal Customizations */
+        .modal-content {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .modal-header {
+            background-color: #19828f;
+            color: white;
+            border-bottom: none;
+        }
+        .modal-header .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
         }
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
 
-    <!-- FIXED NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-citk sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">CITK</a>
+            <a class="navbar-brand text-white navbar-brand-custom" href="index.html">
+                <span class="main-text">CITK</span>
+                <span class="sub-text d-none d-sm-block">Chartered Institute of Taxation (Kenya)</span>
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-
-                    <!-- Who We Are Dropdown -->
+                <ul class="navbar-nav ms-auto gap-2">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="team.html" id="whoWeAreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            WHO WE ARE
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" id="whoWeAreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">WHO WE ARE</a>
                         <ul class="dropdown-menu border-0 shadow" aria-labelledby="whoWeAreDropdown">
                             <li><a class="dropdown-item fw-bold text-citk border-bottom pb-2 mb-2" href="index.html">Overview: Who We Are</a></li>
                             <li><a class="dropdown-item" href="index.html#about-us">About us</a></li>
@@ -106,12 +182,8 @@
                             <li><a class="dropdown-item" href="index.html#values">Values</a></li>
                         </ul>
                     </li>
-
-                    <!-- What We Do Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="services.html" id="whatWeDoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            WHAT WE DO
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" id="whatWeDoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">WHAT WE DO</a>
                         <ul class="dropdown-menu border-0 shadow" aria-labelledby="whatWeDoDropdown">
                             <li><a class="dropdown-item fw-bold text-citk border-bottom pb-2 mb-2" href="services.html">Overview: What We Do</a></li>
                             <li><a class="dropdown-item" href="services.html#training">Training</a></li>
@@ -121,150 +193,177 @@
                             <li><a class="dropdown-item" href="services.html#litigation">Public Interest Litigation</a></li>
                         </ul>
                     </li>
-
-                    <!-- Our People Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="team.html" id="ourPeopleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            OUR PEOPLE
-                        </a>
+                        <a class="nav-link dropdown-toggle active" href="#" id="ourPeopleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">OUR PEOPLE</a>
                         <ul class="dropdown-menu border-0 shadow" aria-labelledby="ourPeopleDropdown">
                             <li><a class="dropdown-item fw-bold text-citk border-bottom pb-2 mb-2" href="team.html">Overview: Our People</a></li>
-                            <li><a class="dropdown-item" href="team.html#job-okworo">Job Okworo</a></li>
-                            <li><a class="dropdown-item" href="team.html#bosire-nyamori">Bosire Nyamori</a></li>
-                            <li><a class="dropdown-item" href="team.html#ngina-mutava">Ngina Mutava</a></li>
-                            <li><a class="dropdown-item" href="team.html#wafula-nyongesa">Wafula Nyongesa</a></li>
-                            <li><a class="dropdown-item" href="team.html#gabriel-kitenga">Gabriel Kitenga</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalJob">Job Okworo</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalBosire">Bosire Nyamori</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalNgina">Ngina Mutava</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEric">Eric Nyongesa Wafula</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalGabriel">Gabriel Kitenga</a></li>
                         </ul>
                     </li>
-
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Header Section -->
     <div class="page-header text-center">
-        <div class="container">
+        <div class="container" data-aos="fade-in" data-aos-duration="1000">
             <h1 class="display-4 fw-bold mb-3">OUR PEOPLE</h1>
-            <p class="lead mb-0">Meet the dedicated professionals leading our initiatives.</p>
+            <p class="lead mb-0" style="font-family: 'Inter', sans-serif;">Meet the dedicated professionals leading our initiatives.</p>
         </div>
     </div>
 
-    <!-- Main Content: OUR PEOPLE -->
     <main class="container mb-5 flex-grow-1">
-        <div class="row g-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 justify-content-center">
 
-            <!-- Job Okworo -->
-            <div class="col-12" id="job-okworo">
-                <div class="card team-card shadow-sm h-100">
-                    <div class="row g-0 h-100">
-                        <div class="col-md-3 team-photo-container border-end">
-                            <!-- Placeholder image to be replaced later -->
-                            <img src="img/JOBOKWORO.jpg" alt="Job Okworo" class="job-photo">
-                        </div>
-                        <div class="col-md-9">
-                            <div class="card-body p-4">
-                                <h3 class="text-citk fw-bold mb-3">Job Okworo</h3>
-                                <p class="text-secondary mb-2">Job Okworo is an Advocate of the High Court of Kenya and a Qualified Certified Public Accountant of Kenya. He has over twenty-three years of progressive work experience in tax and law, having worked in PricewaterhouseCoopers LLP Kenya, KPMG LLP (UK & Channel Islands), KPMG Kenya, HSBC Bank (UK), Azets Limited (UK) and Eight Tax & Accountancy Services Limited (UK).</p>
-                                <p class="text-secondary mb-0">His areas of practice are international tax, tax compliance, tax advisory, business risk & compliance. He is also a partner at RKO advocates LLP (Kenya). Job earned a Bachelor of Laws degree from the University of Nairobi</p>
-                            </div>
-                        </div>
+            <div class="col" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-grid-card">
+                    <div class="photo-wrapper" data-bs-toggle="modal" data-bs-target="#modalJob">
+                        <img src="img/JOBOKWORO.png" alt="Job Okworo" class="team-photo">
                     </div>
+                    <h3 class="text-citk fw-bold mb-1">Job Okworo</h3>
+                    <p class="text-muted small mb-3">Advocate & CPA</p>
+                    <button class="btn btn-citk rounded-pill px-4 btn-sm" data-bs-toggle="modal" data-bs-target="#modalJob">Read Biography</button>
                 </div>
             </div>
 
-            <!-- Bosire Nyamori -->
-            <div class="col-12" id="bosire-nyamori">
-                <div class="card team-card shadow-sm h-100">
-                    <div class="row g-0 h-100">
-                        <div class="col-md-3 team-photo-container border-end">
-                            <!-- Placeholder image to be replaced later -->
-                            <img src="img/Bosire%20Nyamori.jpg%20(1).jpeg" alt="Bosire Nyamori" class="team-photo">
-                        </div>
-                        <div class="col-md-9">
-                            <div class="card-body p-4">
-                                <h3 class="text-citk fw-bold mb-3">Bosire Nyamori</h3>
-                                <p class="text-secondary mb-2">Bosire Nyamori is a lawyer and certified public accountant with over 25 years experience in academia, tax consulting, and legal practice. Currently teaching at the faculty of law, the University of Nairobi he has in the past taught taxation at Massey University, New Zealand and Jomo Kenyatta University of Agriculture and Technology.</p>
-                                <p class="text-secondary mb-0">In tax consulting and legal practice, he worked as a tax advisor at Deloitte and PricewaterhouseCoopers and a tax and commercial law with Iseme, Kamau & Maema Advocate. Bosire received a Bachelor of Laws degree from the University of Nairobi and a Master of Laws degree from the University of Auckland. He is a member of the Law Society of Kenya and the Institute of Certified Public Accountants of Kenya.</p>
-                            </div>
-                        </div>
+            <div class="col" data-aos="fade-up" data-aos-delay="200">
+                <div class="team-grid-card">
+                    <div class="photo-wrapper" data-bs-toggle="modal" data-bs-target="#modalBosire">
+                        <img src="img/Bosire%20Nyamori.jpg%20(1).jpeg" alt="Bosire Nyamori" class="team-photo">
                     </div>
+                    <h3 class="text-citk fw-bold mb-1">Bosire Nyamori</h3>
+                    <p class="text-muted small mb-3">Lawyer & CPA</p>
+                    <button class="btn btn-citk rounded-pill px-4 btn-sm" data-bs-toggle="modal" data-bs-target="#modalBosire">Read Biography</button>
                 </div>
             </div>
 
-            <!-- Ngina Mutava -->
-            <div class="col-12" id="ngina-mutava">
-                <div class="card team-card shadow-sm h-100">
-                    <div class="row g-0 h-100">
-                        <div class="col-md-3 team-photo-container border-end">
-                            <!-- Placeholder image to be replaced later -->
-                            <img src="img/ngina%20paasport%20photo.jpg.jpeg" alt="Ngina Mutava" class="team-photo">
-                        </div>
-                        <div class="col-md-9">
-                            <div class="card-body p-4">
-                                <h3 class="text-citk fw-bold mb-3">Ngina Mutava (Catherine Mutava)</h3>
-                                <p class="text-secondary mb-2">Catherine Mutava is an experienced tax lawyer with over 17 years of expertise in tax law, policy, and dispute resolution. She holds an LL.M. in International Taxation from New York University and an LL.B. from the University of Nairobi. Catherine served as a Member and Panel Chair of Kenya s Tax Appeals Tribunal from 2019 to 2022, where she adjudicated complex tax disputes and contributed to strengthening Kenya s tax jurisprudence.</p>
-                                <p class="text-secondary mb-0">She is currently the Associate Director of the Strathmore Tax Research Centre and a Tax Partner at Lexlink Consulting, where she leads tax research, policy analysis, and advisory services. Catherine has also worked extensively across Africa with international organisations on tax justice, gender and tax, and international tax reform. She combines academic rigour with practical experience in tax litigation and policy development.</p>
-                            </div>
-                        </div>
+            <div class="col" data-aos="fade-up" data-aos-delay="300">
+                <div class="team-grid-card">
+                    <div class="photo-wrapper" data-bs-toggle="modal" data-bs-target="#modalNgina">
+                        <img src="img/ngina%20paasport%20photo.jpg.jpeg" alt="Ngina Mutava" class="team-photo">
                     </div>
+                    <h3 class="text-citk fw-bold mb-1">Ngina Mutava</h3>
+                    <p class="text-muted small mb-3">Experienced Tax Lawyer</p>
+                    <button class="btn btn-citk rounded-pill px-4 btn-sm" data-bs-toggle="modal" data-bs-target="#modalNgina">Read Biography</button>
                 </div>
             </div>
 
-            <!-- Wafula Nyongesa -->
-            <div class="col-12" id="wafula-nyongesa">
-                <div class="card team-card shadow-sm h-100">
-                    <div class="row g-0 h-100">
-                        <div class="col-md-3 team-photo-container border-end">
-                            <!-- Placeholder image to be replaced later -->
-                            <img src="img/Eric%20Nyongesa%20wafula.jpg.jpeg" alt="Eric Nyongesa Wafula" class="team-photo">
-                        </div>
-                        <div class="col-md-9">
-                            <div class="card-body p-4">
-                                <h3 class="text-citk fw-bold mb-3">Eric Nyongesa Wafula</h3>
-                                <p class="text-secondary mb-2">Eric is an Advocate of the High Court of Kenya with over 26 years of experience in litigation and tax dispute resolution. He is the Founder and Managing Partner at Sherman Nyongesa & Mutubia Advocates, where he provides legal counsel across a broad range of areas including tax law, administrative law, arbitration, and alternative dispute resolution. He previously served as a member and later the Chairperson of the Tax Appeals Tribunal, the Chairman of the Law Society of Kenya (Mombasa Branch) and the Coast Representative to the national council the Law Society of Kenya.</p>
-                                <p class="text-secondary mb-0">Eric is a member of several professional organizations, including the Law Society of Kenya, East African Law Society, International Bar Association, Commonwealth Lawyers Association, and the Chartered Institute of Arbitrators (both Kenya and London chapters). He is also a Certified Public Secretary and a recognized expert in arbitration and corporate compliance. Eric holds a Bachelor of Laws from the University of Nairobi and a Diploma in Law from the Kenya School of Law. Beyond his professional pursuits, Eric is an avid golfer.</p>
-                            </div>
-                        </div>
+            <div class="col" data-aos="fade-up" data-aos-delay="150">
+                <div class="team-grid-card">
+                    <div class="photo-wrapper" data-bs-toggle="modal" data-bs-target="#modalEric">
+                        <img src="img/Eric%20Nyongesa%20wafula.jpg.jpeg" alt="Eric Nyongesa Wafula" class="team-photo">
                     </div>
+                    <h3 class="text-citk fw-bold mb-1">Eric N. Wafula</h3>
+                    <p class="text-muted small mb-3">Advocate & Litigator</p>
+                    <button class="btn btn-citk rounded-pill px-4 btn-sm" data-bs-toggle="modal" data-bs-target="#modalEric">Read Biography</button>
                 </div>
             </div>
 
-            <!-- Gabriel Kitenga -->
-            <div class="col-12" id="gabriel-kitenga">
-                <div class="card team-card shadow-sm h-100">
-                    <div class="row g-0 h-100">
-                        <div class="col-md-3 team-photo-container border-end">
-                            <!-- Placeholder image to be replaced later -->
-                            <img src="img/Gabriel%20Kitenga.png" alt="Gabriel Kitenga" class="gabriel-photo">
-                        </div>
-                        <div class="col-md-9">
-                            <div class="card-body p-4">
-                                <h3 class="text-citk fw-bold mb-3">Gabriel Kitenga</h3>
-                                <p class="text-secondary mb-2">Gabriel is a public policy expert with over 37 years experience in customs, excise taxes, trade and regional integration. Gabriel has served the IMF as a revenue expert, and the East African Community as a customs expert. He also served the Ministry of Finance and the Kenya Revenue Authority as a senior deputy commissioner responsible for customs policy and administration. He also served the Kenya Tax Appeals Tribunal where he excelled as a tax jurist in resolving numerous tax disputes.</p>
-                                <p class="text-secondary mb-0">He brings private sector experience on customs and excise gained in consultancy services while working a Deloitte, PricewaterhouseCoopers and Diageo. He has also provided customs advisory services to several revenue administrations in Africa. Gabriel holds Bachelor of Commerce from University of Nairobi and a Master and PhD degrees in Business Administration from Kenyatta University.</p>
-                            </div>
-                        </div>
+            <div class="col" data-aos="fade-up" data-aos-delay="250">
+                <div class="team-grid-card">
+                    <div class="photo-wrapper" data-bs-toggle="modal" data-bs-target="#modalGabriel">
+                        <img src="img/Gabriel%20Kitenga.png" alt="Gabriel Kitenga" class="team-photo">
                     </div>
+                    <h3 class="text-citk fw-bold mb-1">Gabriel Kitenga</h3>
+                    <p class="text-muted small mb-3">Public Policy Expert</p>
+                    <button class="btn btn-citk rounded-pill px-4 btn-sm" data-bs-toggle="modal" data-bs-target="#modalGabriel">Read Biography</button>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- Footer -->
+    <div class="modal fade" id="modalJob" tabindex="-1" aria-labelledby="modalJobLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header">
+                    <h4 class="modal-title mb-0" id="modalJobLabel">Job Okworo</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <p class="text-secondary mb-3">Job Okworo is an Advocate of the High Court of Kenya and a Qualified Certified Public Accountant of Kenya. He has over twenty-three years of progressive work experience in tax and law, having worked in PricewaterhouseCoopers LLP Kenya, KPMG LLP (UK & Channel Islands), KPMG Kenya, HSBC Bank (UK), Azets Limited (UK) and Eight Tax & Accountancy Services Limited (UK).</p>
+                    <p class="text-secondary mb-0">His areas of practice are international tax, tax compliance, tax advisory, business risk & compliance. He is also a partner at RKO advocates LLP (Kenya). Job earned a Bachelor of Laws degree from the University of Nairobi.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalBosire" tabindex="-1" aria-labelledby="modalBosireLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header">
+                    <h4 class="modal-title mb-0" id="modalBosireLabel">Bosire Nyamori</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <p class="text-secondary mb-3">Bosire Nyamori is a lawyer and certified public accountant with over 25 years experience in academia, tax consulting, and legal practice. Currently teaching at the faculty of law, the University of Nairobi he has in the past taught taxation at Massey University, New Zealand and Jomo Kenyatta University of Agriculture and Technology.</p>
+                    <p class="text-secondary mb-0">In tax consulting and legal practice, he worked as a tax advisor at Deloitte and PricewaterhouseCoopers and a tax and commercial law with Iseme, Kamau & Maema Advocate. Bosire received a Bachelor of Laws degree from the University of Nairobi and a Master of Laws degree from the University of Auckland. He is a member of the Law Society of Kenya and the Institute of Certified Public Accountants of Kenya.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalNgina" tabindex="-1" aria-labelledby="modalNginaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header">
+                    <h4 class="modal-title mb-0" id="modalNginaLabel">Ngina Mutava (Catherine Mutava)</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <p class="text-secondary mb-3">Catherine Mutava is an experienced tax lawyer with over 17 years of expertise in tax law, policy, and dispute resolution. She holds an LL.M. in International Taxation from New York University and an LL.B. from the University of Nairobi. Catherine served as a Member and Panel Chair of Kenya's Tax Appeals Tribunal from 2019 to 2022, where she adjudicated complex tax disputes and contributed to strengthening Kenya's tax jurisprudence.</p>
+                    <p class="text-secondary mb-0">She is currently the Associate Director of the Strathmore Tax Research Centre and a Tax Partner at Lexlink Consulting, where she leads tax research, policy analysis, and advisory services. Catherine has also worked extensively across Africa with international organisations on tax justice, gender and tax, and international tax reform. She combines academic rigour with practical experience in tax litigation and policy development.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEric" tabindex="-1" aria-labelledby="modalEricLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header">
+                    <h4 class="modal-title mb-0" id="modalEricLabel">Eric Nyongesa Wafula</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <p class="text-secondary mb-3">Eric is an Advocate of the High Court of Kenya with over 26 years of experience in litigation and tax dispute resolution. He is the Founder and Managing Partner at Sherman Nyongesa & Mutubia Advocates, where he provides legal counsel across a broad range of areas including tax law, administrative law, arbitration, and alternative dispute resolution. He previously served as a member and later the Chairperson of the Tax Appeals Tribunal, the Chairman of the Law Society of Kenya (Mombasa Branch) and the Coast Representative to the national council the Law Society of Kenya.</p>
+                    <p class="text-secondary mb-0">Eric is a member of several professional organizations, including the Law Society of Kenya, East African Law Society, International Bar Association, Commonwealth Lawyers Association, and the Chartered Institute of Arbitrators (both Kenya and London chapters). He is also a Certified Public Secretary and a recognized expert in arbitration and corporate compliance. Eric holds a Bachelor of Laws from the University of Nairobi and a Diploma in Law from the Kenya School of Law. Beyond his professional pursuits, Eric is an avid golfer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalGabriel" tabindex="-1" aria-labelledby="modalGabrielLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header">
+                    <h4 class="modal-title mb-0" id="modalGabrielLabel">Gabriel Kitenga</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <p class="text-secondary mb-3">Gabriel is a public policy expert with over 37 years experience in customs, excise taxes, trade and regional integration. Gabriel has served the IMF as a revenue expert, and the East African Community as a customs expert. He also served the Ministry of Finance and the Kenya Revenue Authority as a senior deputy commissioner responsible for customs policy and administration. He also served the Kenya Tax Appeals Tribunal where he excelled as a tax jurist in resolving numerous tax disputes.</p>
+                    <p class="text-secondary mb-0">He brings private sector experience on customs and excise gained in consultancy services while working a Deloitte, PricewaterhouseCoopers and Diageo. He has also provided customs advisory services to several revenue administrations in Africa. Gabriel holds Bachelor of Commerce from University of Nairobi and a Master and PhD degrees in Business Administration from Kenyatta University.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="bg-citk text-light py-4 mt-auto">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-3 mb-md-0">
-                    <h5 class="text-uppercase mb-3 fw-bold">Visit Us</h5>
+                    <h5 class="text-uppercase mb-3 fw-bold" style="font-family: 'Playfair Display', serif;">Visit Us</h5>
                     <p class="mb-1">Physical Address: Nyaku House, 1st Floor, Rm 10</p>
                     <p class="mb-1">Arwings Kodhek Road</p>
                     <p class="mb-0">P.O. Box 21141-00100 Hurlingham Nairobi</p>
                 </div>
 
                 <div class="col-md-6 text-md-end">
-                    <h5 class="text-uppercase mb-3 fw-bold">Contact Us</h5>
+                    <h5 class="text-uppercase mb-3 fw-bold" style="font-family: 'Playfair Display', serif;">Contact Us</h5>
                     <p class="mb-1">
                         <strong>Email:</strong> <a href="mailto:citax@gmail.com" class="text-light text-decoration-none hover-underline">citax@gmail.com</a>
                     </p>
@@ -273,19 +372,23 @@
                     </p>
                 </div>
             </div>
-
-            <!-- Copyright and Privacy Policy -->
             <hr class="border-light opacity-25">
             <div class="text-center small text-light opacity-75">
                 &copy; 2026 Chartered Institute of Taxation (Kenya). All Rights Reserved.
                 <span class="mx-2">|</span>
                 <a href="privacy.html" class="text-light text-decoration-none border-bottom border-light border-opacity-25 pb-1">Privacy Policy</a>
             </div>
-
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animate On Scroll
+        AOS.init({
+            once: true,
+            offset: 50
+        });
+    </script>
 </body>
 </html>
